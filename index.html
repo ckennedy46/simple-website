@@ -3,9 +3,6 @@
   <head>
     <title>Clara Kennedy</title>
 
-    <script src="terminal.js"></script>
-    <script src="commands.js"></script>
-    <script src="caret.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -26,7 +23,7 @@
         id="texter"
         onkeyup="typeIt(this, event)"
         onkeydown="typeIt(this, event);
-          moveIt(this.value.length, event)"
+              moveIt(this.value.length, event)"
         onkeypress="typeIt(this, event);"
         autofocus
       ></textarea>
@@ -34,5 +31,8 @@
     <div id="liner">
       <span id="typer"></span><b class="cursor" id="cursor">█</b>
     </div>
+    <script src="terminal.js"></script>
+    <script src="commands.js"></script>
+    <script src="caret.js"></script>
   </body>
 </html>

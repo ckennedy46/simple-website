@@ -7,18 +7,17 @@ var textarea = document.getElementById("texter");
 var terminal = document.getElementById("terminal");
 var commands = [];
 var git = 0;
-var pw = false;
-let pwd = false;
+//var pw = false;
+//let pwd = false;
 
 setTimeout(function() {
-    loopLines(banner, "", 80);
-    textarea.focus();
-}, 100);
+     textarea.focus();
+ }, 100);
 
 window.addEventListener("keyup", enterKey);
 
 //init
-textarea.value="";
+textarea.value = "";
 command.innerHTML = textarea.value;
 
 function enterKey(e) {
@@ -28,7 +27,7 @@ function enterKey(e) {
     if (e.keyCode == 13) {
         commands.push(command.innerHTML);
         git = commands.length;
-        addEventListener('guest:clarkprojects ~ $ ' + command.innerHTML, 'no-animation', 0);
+        addLine('guest:clarkeprojects ~ $ ' + command.innerHTML, 'no-animation', 0);
         commander(command.innerHTML.toLowerCase());
         command.innerHTML = "";
         textarea.value = "";
@@ -52,7 +51,7 @@ function enterKey(e) {
 function commander(cmd) {
     switch (cmd.toLowerCase()) {
         case 'help': 
-            help;
+            loopLines(help, "color2 margin", 80);
             break;
         case 'about':
             about;
@@ -75,5 +74,35 @@ function commander(cmd) {
         case 'unspecified':
             unspecified;
             break;
+        default:
+            addLine("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);
+            break;
     }
+}
+
+function addLine(text, style, time) {
+    var t = "";
+    for (let i = 0 ; i < text.length; i++) {
+        if (text.charAt(i) == " " && text.charAt(i + 1) == " ") {
+            t += "&nbsp;&nbsp;";
+            i++;
+        } else {
+            t += text.charAt(i);
+        }
+    }
+    setTimeout(function() {
+        var next = document.createElement("p");
+        next.innerHTML = t;
+        next.className = style;
+
+        before.parentNode.insertBefore(next, before);
+
+        window.scrollTo(0, document.body.offsetHeight);
+    }, time);
+}
+
+function loopLines(name, style, time) {
+    name.forEach(function(item, index) {
+        addLine(item, style, index * time);
+    })
 }

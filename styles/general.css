@@ -73,8 +73,9 @@ b {
   opacity: 0;
 }
 #liner::before {
-  color: whitesmoke;
+  color: lightblue;
   content: "guest:clarkeprojects ~ $ ";
+  font-weight: bold;
 }
 @keyframes show {
   frome {
@@ -116,7 +117,7 @@ p {
   color: #DCDCCC;
 }
 .color2 {
-  color: #B89076;
+  color: whitesmoke;
 }
 .command {
   color: #73ABAD;
